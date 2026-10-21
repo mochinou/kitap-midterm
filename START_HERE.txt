@@ -1,0 +1,19 @@
+KITAP — REACT MIDTERM PROJECT
+
+1. Node.js 20.19+ орнат.
+2. Осы буманы VS Code-та аш.
+3. Terminal ішінде:
+
+   npm ci
+   npm run dev
+
+4. Терминалда көрсетілген сайт сілтемесін аш.
+
+Код: src/ бумасында.
+Толық нұсқаулық және deploy: README.md
+Кодтың қазақша түсіндірмесі: docs/QORGAU.md
+PDF талаптарының сәйкестігі: docs/REQUIREMENTS.md
+Тест сценарийлері: docs/TESTING.md
+
+Тапсыру үшін public repository link және тұрақты deployed application link керек.
+Уақытша live preview мен localhost тұрақты deploy орнына жүрмейді.
