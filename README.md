@@ -1,77 +1,74 @@
-# Kitap — Find your next chapter
+Kitap — Find Your Next Chapter
+Kitap is a React single-page application for discovering books and building a personal reading list. It was created as a React midterm project using JavaScript, reusable components, and plain CSS.
 
-React midterm project: **кітаптар каталогы**. Интерфейс ағылшынша, түсіндірме қазақша.
+Live demo: kitapv.netlify.app
 
-Код JavaScript пен кәдімгі CSS арқылы жазылған. Redux, TypeScript, UI framework немесе бөлек backend жоқ.
+GitHub repository: mochinou/kitap-midterm
 
-## Жылдам іске қосу
+Features
+120 initial books across 8 genres.
+Search by title, author, or words in the description.
+Case-insensitive search with leading and trailing spaces removed.
+Filter by genre and minimum rating.
+Sort by title, rating, or publication year, or keep the featured order.
+Pagination with 12 books per page.
+A detail page for each book, including up to four other books from the same genre.
+A controlled form for adding books, with field validation and submission feedback.
+A reading list with bookmark and remove actions.
+Persistent books and bookmarks using browser localStorage.
+Loading, error, empty, and success states.
+Responsive layouts for desktop, tablet, and mobile screens.
+A not-found view for unknown pages or book IDs.
+The available genres are Fiction, Classics, Fantasy, Mystery, Romance, Science Fiction, Non-fiction, and Poetry.
 
-**Node.js 20.19+ немесе 22.12+** орнатылған болсын.
+Tech Stack
+React 18 — components, props, useState, useEffect, and useRef.
+React Router 7 — client-side navigation.
+Vite 6 — development server and production build.
+JavaScript — application logic and data handling.
+CSS — Grid, Flexbox, responsive styling, and cover designs.
+JSON, Promises, delays, and localStorage — simulated API.
+SVG — reusable icons and original book-cover artwork.
+The project does not use Redux, TypeScript, a UI framework, or a separate backend.
 
-ZIP-ті ашып, `kitap` бумасында терминалды аш:
+Getting Started
+Requirements
+Node.js 20.19+ or 22.12+.
+npm.
+Installation
+Bash
 
-```bash
+git clone https://github.com/mochinou/kitap-midterm.git
+cd kitap-midterm
 npm ci
 npm run dev
-```
+Open the address printed in the terminal, usually http://localhost:5173.
 
-Терминалда көрсетілген мекенжайды браузерде аш. Әдетте: `http://localhost:5173`.
+If you downloaded the project as a ZIP, extract it and open a terminal in the folder containing 
+package.json
+. Use the Vite server rather than opening 
+index.html
+ directly.
 
-Қалған командалар:
+Available Commands
+Command	Purpose
+npm ci	Install dependencies using the lock file
+npm run dev	Start the development server
+npm run check	Validate the initial JSON records
+npm run build	Create a production build in dist/
+npm run preview	Preview the production build locally
+Project Structure
+text
 
-```bash
-npm run check    # JSON-да 100+ кітап, бірегей ID және дұрыс өрістер барын тексеру
-npm run build    # production нұсқасын dist/ бумасына жинау
-npm run preview  # жиналған нұсқаны жергілікті тексеру
-```
-
-`node_modules` ZIP-ке кірмейді: оны `npm ci` орнатады. `index.html` файлын екі рет басып ашпай, Vite серверін қолдан.
-
-`books.json` файлын өзгертсең, бұрын сақталған localStorage дерегі автоматты ауыспайды. Тек өз тест дерегіңді тазалау үшін DevTools-та `localStorage.removeItem('kitap.books.v1')` орындап, бетті қайта аш. Reading list бөлек key-де сақталады.
-
-## Не жұмыс істейді?
-
-- 120 бастапқы кітап, 8 жанр.
-- Атауы, авторы және сипаттамадағы сөздер бойынша іздеу.
-- Жанр және ең төменгі рейтинг бойынша сүзу.
-- Featured, рейтинг, A–Z, жаңа/ескі жариялану жылы бойынша сұрыптау.
-- Әр бетте 12 кітаптан pagination.
-- Кітаптың жеке detail беті және сол жанрдағы ұсыныстар.
-- Жаңа кітап қосатын controlled form және өрістерді тексеру.
-- Reading list-ке сақтау және одан алып тастау.
-- Loading, error, empty және success күйлері.
-- Refresh жасағанда кітаптар мен reading list жоғалмайды.
-- Телефон, планшет және компьютерге бейімделетін дизайн.
-- Қате URL үшін 404 көрінісі.
-
-## Қолданылған құралдар
-
-- React 18: компоненттер, props, `useState`, `useEffect`, `useRef`.
-- React Router 7: SPA ішіндегі беттер.
-- Vite 6: development server және production build.
-- CSS: responsive layout, Grid, Flexbox.
-- JSON + Promise + delay + localStorage: simulated API.
-
-## Беттер
-
-| URL               | Мақсаты                          |
-| ----------------- | -------------------------------- |
-| `/`               | Негізгі каталог                  |
-| `/reading-list`   | Сақталған кітаптар               |
-| `/books/book-016` | Бір кітаптың detail бетіне мысал |
-| `/add`            | Жаңа кітап қосу                  |
-
-## Бумалар
-
-```text
-kitap/
+kitap-midterm/
 ├── public/
-│   ├── fonts/                 # Жергілікті қаріптер және OFL лицензиялары
-│   ├── _redirects             # Netlify-де SPA беттерін refresh жасау
+│   ├── fonts/                 # Local fonts and their licenses
+│   ├── _redirects             # Netlify SPA fallback
 │   └── favicon.svg
 ├── src/
-│   ├── api/booksApi.js        # JSON/localStorage-пен жұмыс істейтін simulated API
-│   ├── components/            # Қайта қолданылатын UI компоненттері
+│   ├── api/
+│   │   └── booksApi.js        # Simulated API and storage helpers
+│   ├── components/
 │   │   ├── Header.jsx
 │   │   ├── Hero.jsx
 │   │   ├── BookCard.jsx
@@ -82,85 +79,121 @@ kitap/
 │   │   ├── Footer.jsx
 │   │   └── Icon.jsx
 │   ├── data/
-│   │   ├── books.json         # 120 толық бастапқы жазба
-│   │   └── constants.js       # Жанрлар, мұқаба түстері, PAGE_SIZE
+│   │   ├── books.json         # 120 initial book records
+│   │   └── constants.js       # Genres, cover themes, and page size
 │   ├── pages/
-│   │   ├── Catalogue.jsx      # Search → filter → sort → pagination
+│   │   ├── Catalogue.jsx
 │   │   ├── BookDetails.jsx
 │   │   └── AddBook.jsx
-│   ├── App.jsx                # Ортақ state және routes
-│   ├── main.jsx               # React-ті іске қосу
+│   ├── App.jsx                # Shared state and routes
+│   ├── main.jsx               # React entry point
 │   └── styles.css
-├── docs/
-│   ├── QORGAU.md              # Код пен теорияны қазақша түсіндіру
-│   ├── REQUIREMENTS.md        # PDF талаптарының қай жерде орындалғаны
-│   └── TESTING.md             # Қолмен тексеру сценарийлері
-├── scripts/check-data.mjs
+├── docs/                      # Project notes and testing guides
+├── scripts/
+│   └── check-data.mjs         # Seed-data validation
+├── index.html
 ├── netlify.toml
 ├── vercel.json
 ├── vite.config.js
-└── package.json
-```
+├── package.json
+└── package-lock.json
+Application Routes
+Route	Description
+/	Discover and browse the full catalogue
+/reading-list	View bookmarked books
+/books/:id	Open a book's detail page
+/add	Add a new book
+For example, The Midnight Library is available at /books/book-016.
 
-## Simulated API қалай жұмыс істейді?
+Data Source and Simulated API
+The application uses one simulated data-access module: 
+booksApi.js
+.
 
-Негізгі дерек көзі — `src/api/booksApi.js`.
-
-1. `getBooks()` Promise арқылы 550 ms күтеді.
-2. Бірінші ашылғанда JSON-дағы 120 кітап localStorage-ке жазылады.
-3. Кейінгі ашылуларда сол браузерде сақталған дерек оқылады.
-4. `addBook()` 650 ms күтеді, UUID береді, жаңа кітапты localStorage-ке сақтайды.
-5. Сақтау сәтті болса ғана React state жаңартылады.
+getBooks() waits for 550 ms to simulate an asynchronous request.
+On the first visit, the 120 records from books.json are saved to localStorage.
+Later visits load the saved catalogue from the same browser.
+addBook() waits for 650 ms, creates a UUID, and saves the new book.
+React state is updated only after the storage write succeeds.
+New books start with a rating of 0, displayed as New or Not rated yet. The reading list stores book IDs rather than duplicate book objects.
 
 Storage keys:
 
-```text
+text
+
 kitap.books.v1
 kitap.reading-list.v1
-```
+This is not a remote HTTP API or a shared database. The simulated API uses Promises and delays around local JSON/storage operations. Each browser and origin has its own data, so added books and bookmarks are not synchronized between users or devices. Localhost and the deployed website also have separate storage.
 
-**Маңызды шектеу:** бұл ортақ серверлік база емес. Әр браузердің және әр доменнің өз дерегі бар. Бір браузерде қосылған кітап басқа адамның браузерінде көрінбейді. Localhost пен deployed сайттың storage-і де бөлек. Бөлек backend, API key немесе интернеттегі кітап сервисі қажет емес.
+Clearing site data removes locally added books and bookmarks. If you edit books.json, existing localStorage records are not automatically replaced. Use a fresh browser profile to test changed seed data, or remove only the relevant test storage key before reloading. Restoring the demo catalogue replaces locally added books with the original 120 records.
 
-Рейтингтер — simulated demo values; бет саны басылымға байланысты өзгеруі мүмкін. Сипаттамалар қысқаша таныстыру үшін жазылған. Мұқабалар — осы жобаға арналған SVG/CSS дизайндары, нақты баспалардың ресми мұқабалары емес. Қаріптер жергілікті файлдардан жүктеледі.
+State and Component Structure
+App manages the shared catalogue, loading/error state, saved IDs, and notifications.
+Catalogue manages local search, filters, sorting, and pagination.
+AddBook manages controlled field values, validation errors, submission state, and success feedback.
+Reusable components receive data and callbacks through props.
+The catalogue processes data in this order:
 
-## Міндетті: тұрақты public deploy
+text
 
-PDF тек localhost-та жұмыс істейтін жобаны қабылдамайды. **Уақытша live preview тұрақты submission link-тің орнына жүрмейді.** Код пен build дайын; өз аккаунтыңдағы repository және тұрақты public URL бөлек жариялануы керек.
+All books or saved books
+→ search and filters
+→ sorting
+→ pagination
+→ rendered book cards
+Changing a filter resets the current page to 1. Arrays and objects are updated immutably, and book lists use stable IDs as keys.
 
-### Ең оңай жол: Netlify Drop
+Effects handle catalogue loading, the notification timer, and route scrolling. Cleanup ignores outdated loading results and clears notification timers; it does not cancel the simulated API Promise itself.
 
-1. Жоба бумасында `npm ci`, одан кейін `npm run build` орында.
-2. `https://app.netlify.com/drop` ашып, өз аккаунтыңа кір.
-3. Дайын **`dist` бумасын** жүкте. Source бумасын емес.
-4. Netlify берген `https://...netlify.app` сілтемесін көшір.
-5. Сайтты private/incognito терезесінде ашып тексер.
-6. `/books/book-016` мекенжайын тікелей ашып, refresh жасап тексер.
+Deployment
+The application is publicly available at https://kitapv.netlify.app/.
 
-Егер дайын **`kitap-deploy.zip`** архивін қолдансаң, оны ашып, ішіндегі `kitap-site` бумасын Netlify Drop-қа жүктей аласың. Кодты өзгертсең, build-ті қайта жинау керек.
+To deploy another copy from this repository on Netlify, use:
 
-`public/_redirects` файлы build кезінде `dist` ішіне көшеді; ол detail/add/reading-list URL-дарын refresh жасағанда 404 шықпауын қамтамасыз етеді.
+Setting	Value
+Production branch	main
+Base directory	Repository root
+Build command	npm run build
+Publish directory	dist
 
-### Repository арқылы Netlify немесе Vercel
+netlify.toml
+ contains the build configuration. No environment variables, API keys, or separate backend deployment are required.
 
-1. Өз аккаунтыңда жаңа public GitHub repository құр.
-2. Осы source файлдарын жүкте. `node_modules/` пен `dist/` қажет емес.
-3. Netlify/Vercel ішінде repository-ді таңда.
-4. Build command: `npm run build`.
-5. Output/publish directory: `dist`.
-6. Environment variables қажет емес.
-7. Жарияланған сайтты және detail URL refresh-ін тексер.
 
-Netlify үшін `netlify.toml`, Vercel үшін `vercel.json` дайын.
+_redirects
+ provides the SPA fallback so direct links such as /books/book-016 continue to work after a browser refresh. A 
+vercel.json
+ rewrite configuration is also included for Vercel deployments.
 
-## Тапсыру алдында
+For a manual deployment, run npm run build and upload the generated dist folder to Netlify. Rebuild before uploading whenever the source code changes.
 
-- [ ] Кодты оқып, атауларын, түстерін немесе деректерін өзіңе бейімдедім.
-- [ ] `npm run check` және `npm run build` сәтті аяқталды.
-- [ ] Public repository link дайын.
-- [ ] Тұрақты deployed application link дайын.
-- [ ] Сайт басқа браузерден және телефоннан ашылады.
-- [ ] Жеке detail URL refresh-тен кейін де ашылады.
-- [ ] `docs/QORGAU.md` ішіндегі сұрақтарға жауап бере аламын.
-- [ ] Repository link пен application link-ті тапсырып, дедлайнға дейін **Turn in** бастым.
+Testing
+Run the seed-data check and production build:
 
-Алдымен кодты түсініп ал: қорғауда шағын өзгеріс жасау сұралуы мүмкін. Негізгі түсіндірме — `docs/QORGAU.md`.
+Bash
+
+npm run check
+npm run build
+The data check verifies that the initial catalogue has at least 100 records, unique IDs and titles, known genres, and valid required fields. It is not a full React unit-test suite.
+
+Useful browser checks:
+
+Search for mAtT HaIg and confirm that The Midnight Library is found.
+Select Fantasy and confirm that the initial dataset contains 15 matching books.
+Change sorting, navigate between pages, and confirm that filters reset pagination.
+Open a detail URL directly and refresh it.
+Add a bookmark, refresh, and check the reading list.
+Submit an empty add form to check validation, then add a valid book.
+Check the layout at desktop and mobile widths.
+Detailed scenarios are available in 
+
+TESTING.md
+.
+
+Data and Asset Notes
+Ratings are illustrative demo values, not real user votes.
+Page counts may vary between editions.
+Book descriptions are short summaries for the catalogue.
+Covers are original SVG/CSS designs, not official publisher covers.
+Fonts are served locally; their OFL license files are included in public/fonts/.
+The project is a catalogue, not a store or an e-book reader. Authentication, payments, full book texts, and editing/deleting individual catalogue entries are not implemented.
